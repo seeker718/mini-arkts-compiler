@@ -19,7 +19,7 @@ jobs:
       - name: 安装 Python ${{ matrix.python-version }}
         uses: actions/setup-python@v5
         with:
-          python-version:${{ matrix.python-version }}
+          python-version: ${{ matrix.python-version }}
 
       - name: 运行全部单元测试
         run: python -m unittest discover -s tests -v
