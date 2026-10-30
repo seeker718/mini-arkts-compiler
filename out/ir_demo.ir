@@ -1,0 +1,56 @@
+module mini_arkts_module
+
+func square(%p0_x) -> number {
+entry:
+  %t1 = mul %p0_x, %p0_x
+  ret %t1
+}
+
+func sumTo(%p0_n) -> number {
+entry:
+  %total = assign 0
+  %i = assign 1
+  jmp while.cond.1
+while.cond.1:
+  %t1 = le %i, %p0_n
+  br %t1, while.body.2, while.end.3
+while.body.2:
+  %t2 = add %total, %i
+  %total.2 = assign %t2
+  %t3 = add %i, 1
+  %i.2 = assign %t3
+  jmp while.cond.1
+while.end.3:
+  ret %total.2
+}
+
+func classify(%p0_value) -> number {
+entry:
+  %result = assign 1
+  %t1 = gt %p0_value, 100
+  br %t1, if.then.1, if.else.2
+if.then.1:
+  %result.2 = assign 2
+  jmp if.end.3
+if.else.2:
+  %t2 = add %result, 0
+  %result.3 = assign %t2
+  jmp if.end.3
+if.end.3:
+  %result.4 = phi [%result.2, if.then.1], [%result.3, if.else.2]
+  ret %result.4
+}
+
+func demo() -> number {
+entry:
+  %n = assign 10
+  %t1 = call square(%n)
+  %sq = assign %t1
+  %t2 = call sumTo(%n)
+  %s = assign %t2
+  %t3 = call classify(%s)
+  %c = assign %t3
+  %t4 = add %sq, %s
+  %t5 = add %t4, %c
+  ret %t5
+}

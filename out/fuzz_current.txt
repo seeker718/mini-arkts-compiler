@@ -1,0 +1,15 @@
+case #100 (grammar)
+========================================
+function fn0(): number {
+  let v0: number = 9;
+  if ((v0 - 35) != (16 * v0)) { let d1: number = ((v0 * 8) - (v0 * v0)); } else { let d2: number = (5 - (14 * v0)); }
+  return v0;
+}
+
+function fn1(): number {
+  let v0: number = 10;
+  let v1: number = 15;
+  if (v1 != (v0 + 19)) { v1 = (v0 - (v0 - v0)); }
+  let d1: number = ((v1 * v0) + (44 - 24));
+  return v1;
+}

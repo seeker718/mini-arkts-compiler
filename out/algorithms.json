@@ -1,0 +1,888 @@
+{
+  "type": "Program",
+  "line": 1,
+  "column": 1,
+  "body": [
+    {
+      "type": "FunctionDeclaration",
+      "line": 4,
+      "column": 1,
+      "name": "fib",
+      "params": [
+        {
+          "type": "Parameter",
+          "line": 4,
+          "column": 14,
+          "name": "n",
+          "type_annotation": {
+            "type": "TypeAnnotation",
+            "line": 4,
+            "column": 17,
+            "name": "number",
+            "type_args": [],
+            "is_array": false
+          },
+          "default": null,
+          "rest": false
+        }
+      ],
+      "return_type": {
+        "type": "TypeAnnotation",
+        "line": 4,
+        "column": 26,
+        "name": "number",
+        "type_args": [],
+        "is_array": false
+      },
+      "body": {
+        "type": "Block",
+        "line": 4,
+        "column": 33,
+        "body": [
+          {
+            "type": "VariableDeclaration",
+            "line": 5,
+            "column": 3,
+            "kind": "let",
+            "name": "a",
+            "type_annotation": {
+              "type": "TypeAnnotation",
+              "line": 5,
+              "column": 10,
+              "name": "number",
+              "type_args": [],
+              "is_array": false
+            },
+            "init": {
+              "type": "Literal",
+              "line": 5,
+              "column": 19,
+              "value": 0,
+              "raw": "0",
+              "literal_type": "number"
+            },
+            "decorators": []
+          },
+          {
+            "type": "VariableDeclaration",
+            "line": 6,
+            "column": 3,
+            "kind": "let",
+            "name": "b",
+            "type_annotation": {
+              "type": "TypeAnnotation",
+              "line": 6,
+              "column": 10,
+              "name": "number",
+              "type_args": [],
+              "is_array": false
+            },
+            "init": {
+              "type": "Literal",
+              "line": 6,
+              "column": 19,
+              "value": 1,
+              "raw": "1",
+              "literal_type": "number"
+            },
+            "decorators": []
+          },
+          {
+            "type": "ForStatement",
+            "line": 7,
+            "column": 3,
+            "init": {
+              "type": "VariableDeclaration",
+              "line": 7,
+              "column": 8,
+              "kind": "let",
+              "name": "i",
+              "type_annotation": null,
+              "init": {
+                "type": "Literal",
+                "line": 7,
+                "column": 16,
+                "value": 0,
+                "raw": "0",
+                "literal_type": "number"
+              },
+              "decorators": []
+            },
+            "test": {
+              "type": "BinaryExpression",
+              "line": 7,
+              "column": 19,
+              "operator": "<",
+              "left": {
+                "type": "Identifier",
+                "line": 7,
+                "column": 19,
+                "name": "i"
+              },
+              "right": {
+                "type": "Identifier",
+                "line": 7,
+                "column": 23,
+                "name": "n"
+              }
+            },
+            "update": {
+              "type": "UpdateExpression",
+              "line": 7,
+              "column": 26,
+              "operator": "++",
+              "argument": {
+                "type": "Identifier",
+                "line": 7,
+                "column": 26,
+                "name": "i"
+              },
+              "prefix": false
+            },
+            "body": {
+              "type": "Block",
+              "line": 7,
+              "column": 31,
+              "body": [
+                {
+                  "type": "VariableDeclaration",
+                  "line": 8,
+                  "column": 5,
+                  "kind": "let",
+                  "name": "t",
+                  "type_annotation": {
+                    "type": "TypeAnnotation",
+                    "line": 8,
+                    "column": 12,
+                    "name": "number",
+                    "type_args": [],
+                    "is_array": false
+                  },
+                  "init": {
+                    "type": "BinaryExpression",
+                    "line": 8,
+                    "column": 21,
+                    "operator": "+",
+                    "left": {
+                      "type": "Identifier",
+                      "line": 8,
+                      "column": 21,
+                      "name": "a"
+                    },
+                    "right": {
+                      "type": "Identifier",
+                      "line": 8,
+                      "column": 25,
+                      "name": "b"
+                    }
+                  },
+                  "decorators": []
+                },
+                {
+                  "type": "ExpressionStatement",
+                  "line": 9,
+                  "column": 5,
+                  "expression": {
+                    "type": "AssignmentExpression",
+                    "line": 9,
+                    "column": 5,
+                    "operator": "=",
+                    "left": {
+                      "type": "Identifier",
+                      "line": 9,
+                      "column": 5,
+                      "name": "a"
+                    },
+                    "right": {
+                      "type": "Identifier",
+                      "line": 9,
+                      "column": 9,
+                      "name": "b"
+                    }
+                  }
+                },
+                {
+                  "type": "ExpressionStatement",
+                  "line": 10,
+                  "column": 5,
+                  "expression": {
+                    "type": "AssignmentExpression",
+                    "line": 10,
+                    "column": 5,
+                    "operator": "=",
+                    "left": {
+                      "type": "Identifier",
+                      "line": 10,
+                      "column": 5,
+                      "name": "b"
+                    },
+                    "right": {
+                      "type": "Identifier",
+                      "line": 10,
+                      "column": 9,
+                      "name": "t"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "type": "ReturnStatement",
+            "line": 12,
+            "column": 3,
+            "argument": {
+              "type": "Identifier",
+              "line": 12,
+              "column": 10,
+              "name": "a"
+            }
+          }
+        ]
+      },
+      "decorators": [],
+      "modifiers": []
+    },
+    {
+      "type": "FunctionDeclaration",
+      "line": 15,
+      "column": 1,
+      "name": "sum",
+      "params": [
+        {
+          "type": "Parameter",
+          "line": 15,
+          "column": 14,
+          "name": "values",
+          "type_annotation": {
+            "type": "TypeAnnotation",
+            "line": 15,
+            "column": 22,
+            "name": "number",
+            "type_args": [],
+            "is_array": true
+          },
+          "default": null,
+          "rest": false
+        }
+      ],
+      "return_type": {
+        "type": "TypeAnnotation",
+        "line": 15,
+        "column": 33,
+        "name": "number",
+        "type_args": [],
+        "is_array": false
+      },
+      "body": {
+        "type": "Block",
+        "line": 15,
+        "column": 40,
+        "body": [
+          {
+            "type": "VariableDeclaration",
+            "line": 16,
+            "column": 3,
+            "kind": "let",
+            "name": "total",
+            "type_annotation": {
+              "type": "TypeAnnotation",
+              "line": 16,
+              "column": 14,
+              "name": "number",
+              "type_args": [],
+              "is_array": false
+            },
+            "init": {
+              "type": "Literal",
+              "line": 16,
+              "column": 23,
+              "value": 0,
+              "raw": "0",
+              "literal_type": "number"
+            },
+            "decorators": []
+          },
+          {
+            "type": "VariableDeclaration",
+            "line": 17,
+            "column": 3,
+            "kind": "let",
+            "name": "i",
+            "type_annotation": {
+              "type": "TypeAnnotation",
+              "line": 17,
+              "column": 10,
+              "name": "number",
+              "type_args": [],
+              "is_array": false
+            },
+            "init": {
+              "type": "Literal",
+              "line": 17,
+              "column": 19,
+              "value": 0,
+              "raw": "0",
+              "literal_type": "number"
+            },
+            "decorators": []
+          },
+          {
+            "type": "WhileStatement",
+            "line": 18,
+            "column": 3,
+            "test": {
+              "type": "BinaryExpression",
+              "line": 18,
+              "column": 10,
+              "operator": "<",
+              "left": {
+                "type": "Identifier",
+                "line": 18,
+                "column": 10,
+                "name": "i"
+              },
+              "right": {
+                "type": "MemberExpression",
+                "line": 18,
+                "column": 14,
+                "object": {
+                  "type": "Identifier",
+                  "line": 18,
+                  "column": 14,
+                  "name": "values"
+                },
+                "property": {
+                  "type": "Identifier",
+                  "line": 18,
+                  "column": 21,
+                  "name": "length"
+                },
+                "computed": false
+              }
+            },
+            "body": {
+              "type": "Block",
+              "line": 18,
+              "column": 29,
+              "body": [
+                {
+                  "type": "ExpressionStatement",
+                  "line": 19,
+                  "column": 5,
+                  "expression": {
+                    "type": "AssignmentExpression",
+                    "line": 19,
+                    "column": 5,
+                    "operator": "+=",
+                    "left": {
+                      "type": "Identifier",
+                      "line": 19,
+                      "column": 5,
+                      "name": "total"
+                    },
+                    "right": {
+                      "type": "MemberExpression",
+                      "line": 19,
+                      "column": 14,
+                      "object": {
+                        "type": "Identifier",
+                        "line": 19,
+                        "column": 14,
+                        "name": "values"
+                      },
+                      "property": {
+                        "type": "Identifier",
+                        "line": 19,
+                        "column": 21,
+                        "name": "i"
+                      },
+                      "computed": true
+                    }
+                  }
+                },
+                {
+                  "type": "ExpressionStatement",
+                  "line": 20,
+                  "column": 5,
+                  "expression": {
+                    "type": "UpdateExpression",
+                    "line": 20,
+                    "column": 5,
+                    "operator": "++",
+                    "argument": {
+                      "type": "Identifier",
+                      "line": 20,
+                      "column": 5,
+                      "name": "i"
+                    },
+                    "prefix": false
+                  }
+                }
+              ]
+            }
+          },
+          {
+            "type": "ReturnStatement",
+            "line": 22,
+            "column": 3,
+            "argument": {
+              "type": "Identifier",
+              "line": 22,
+              "column": 10,
+              "name": "total"
+            }
+          }
+        ]
+      },
+      "decorators": [],
+      "modifiers": []
+    },
+    {
+      "type": "FunctionDeclaration",
+      "line": 25,
+      "column": 1,
+      "name": "classify",
+      "params": [
+        {
+          "type": "Parameter",
+          "line": 25,
+          "column": 19,
+          "name": "score",
+          "type_annotation": {
+            "type": "TypeAnnotation",
+            "line": 25,
+            "column": 26,
+            "name": "number",
+            "type_args": [],
+            "is_array": false
+          },
+          "default": null,
+          "rest": false
+        }
+      ],
+      "return_type": {
+        "type": "TypeAnnotation",
+        "line": 25,
+        "column": 35,
+        "name": "string",
+        "type_args": [],
+        "is_array": false
+      },
+      "body": {
+        "type": "Block",
+        "line": 25,
+        "column": 42,
+        "body": [
+          {
+            "type": "IfStatement",
+            "line": 26,
+            "column": 3,
+            "test": {
+              "type": "LogicalExpression",
+              "line": 26,
+              "column": 7,
+              "operator": "&&",
+              "left": {
+                "type": "BinaryExpression",
+                "line": 26,
+                "column": 7,
+                "operator": ">=",
+                "left": {
+                  "type": "Identifier",
+                  "line": 26,
+                  "column": 7,
+                  "name": "score"
+                },
+                "right": {
+                  "type": "Literal",
+                  "line": 26,
+                  "column": 16,
+                  "value": 90,
+                  "raw": "90",
+                  "literal_type": "number"
+                }
+              },
+              "right": {
+                "type": "BinaryExpression",
+                "line": 26,
+                "column": 22,
+                "operator": "<=",
+                "left": {
+                  "type": "Identifier",
+                  "line": 26,
+                  "column": 22,
+                  "name": "score"
+                },
+                "right": {
+                  "type": "Literal",
+                  "line": 26,
+                  "column": 31,
+                  "value": 100,
+                  "raw": "100",
+                  "literal_type": "number"
+                }
+              }
+            },
+            "consequent": {
+              "type": "Block",
+              "line": 26,
+              "column": 36,
+              "body": [
+                {
+                  "type": "ReturnStatement",
+                  "line": 27,
+                  "column": 5,
+                  "argument": {
+                    "type": "Literal",
+                    "line": 27,
+                    "column": 12,
+                    "value": "excellent",
+                    "raw": "'excellent'",
+                    "literal_type": "string"
+                  }
+                }
+              ]
+            },
+            "alternate": {
+              "type": "IfStatement",
+              "line": 28,
+              "column": 10,
+              "test": {
+                "type": "BinaryExpression",
+                "line": 28,
+                "column": 14,
+                "operator": ">=",
+                "left": {
+                  "type": "Identifier",
+                  "line": 28,
+                  "column": 14,
+                  "name": "score"
+                },
+                "right": {
+                  "type": "Literal",
+                  "line": 28,
+                  "column": 23,
+                  "value": 60,
+                  "raw": "60",
+                  "literal_type": "number"
+                }
+              },
+              "consequent": {
+                "type": "Block",
+                "line": 28,
+                "column": 27,
+                "body": [
+                  {
+                    "type": "ReturnStatement",
+                    "line": 29,
+                    "column": 5,
+                    "argument": {
+                      "type": "Literal",
+                      "line": 29,
+                      "column": 12,
+                      "value": "pass",
+                      "raw": "'pass'",
+                      "literal_type": "string"
+                    }
+                  }
+                ]
+              },
+              "alternate": {
+                "type": "Block",
+                "line": 30,
+                "column": 10,
+                "body": [
+                  {
+                    "type": "ReturnStatement",
+                    "line": 31,
+                    "column": 5,
+                    "argument": {
+                      "type": "Literal",
+                      "line": 31,
+                      "column": 12,
+                      "value": "fail",
+                      "raw": "'fail'",
+                      "literal_type": "string"
+                    }
+                  }
+                ]
+              }
+            }
+          }
+        ]
+      },
+      "decorators": [],
+      "modifiers": []
+    },
+    {
+      "type": "FunctionDeclaration",
+      "line": 35,
+      "column": 1,
+      "name": "demo",
+      "params": [],
+      "return_type": {
+        "type": "TypeAnnotation",
+        "line": 35,
+        "column": 18,
+        "name": "void",
+        "type_args": [],
+        "is_array": false
+      },
+      "body": {
+        "type": "Block",
+        "line": 35,
+        "column": 23,
+        "body": [
+          {
+            "type": "VariableDeclaration",
+            "line": 36,
+            "column": 3,
+            "kind": "let",
+            "name": "values",
+            "type_annotation": {
+              "type": "TypeAnnotation",
+              "line": 36,
+              "column": 15,
+              "name": "number",
+              "type_args": [],
+              "is_array": true
+            },
+            "init": {
+              "type": "ArrayLiteral",
+              "line": 36,
+              "column": 26,
+              "elements": [
+                {
+                  "type": "Literal",
+                  "line": 36,
+                  "column": 27,
+                  "value": 1,
+                  "raw": "1",
+                  "literal_type": "number"
+                },
+                {
+                  "type": "Literal",
+                  "line": 36,
+                  "column": 30,
+                  "value": 2,
+                  "raw": "2",
+                  "literal_type": "number"
+                },
+                {
+                  "type": "Literal",
+                  "line": 36,
+                  "column": 33,
+                  "value": 3,
+                  "raw": "3",
+                  "literal_type": "number"
+                },
+                {
+                  "type": "Literal",
+                  "line": 36,
+                  "column": 36,
+                  "value": 4,
+                  "raw": "4",
+                  "literal_type": "number"
+                },
+                {
+                  "type": "Literal",
+                  "line": 36,
+                  "column": 39,
+                  "value": 5,
+                  "raw": "5",
+                  "literal_type": "number"
+                }
+              ]
+            },
+            "decorators": []
+          },
+          {
+            "type": "VariableDeclaration",
+            "line": 37,
+            "column": 3,
+            "kind": "let",
+            "name": "n",
+            "type_annotation": {
+              "type": "TypeAnnotation",
+              "line": 37,
+              "column": 10,
+              "name": "number",
+              "type_args": [],
+              "is_array": false
+            },
+            "init": {
+              "type": "CallExpression",
+              "line": 37,
+              "column": 19,
+              "callee": {
+                "type": "Identifier",
+                "line": 37,
+                "column": 19,
+                "name": "fib"
+              },
+              "arguments": [
+                {
+                  "type": "Literal",
+                  "line": 37,
+                  "column": 23,
+                  "value": 10,
+                  "raw": "10",
+                  "literal_type": "number"
+                }
+              ]
+            },
+            "decorators": []
+          },
+          {
+            "type": "VariableDeclaration",
+            "line": 38,
+            "column": 3,
+            "kind": "let",
+            "name": "s",
+            "type_annotation": {
+              "type": "TypeAnnotation",
+              "line": 38,
+              "column": 10,
+              "name": "number",
+              "type_args": [],
+              "is_array": false
+            },
+            "init": {
+              "type": "CallExpression",
+              "line": 38,
+              "column": 19,
+              "callee": {
+                "type": "Identifier",
+                "line": 38,
+                "column": 19,
+                "name": "sum"
+              },
+              "arguments": [
+                {
+                  "type": "Identifier",
+                  "line": 38,
+                  "column": 23,
+                  "name": "values"
+                }
+              ]
+            },
+            "decorators": []
+          },
+          {
+            "type": "VariableDeclaration",
+            "line": 39,
+            "column": 3,
+            "kind": "let",
+            "name": "flag",
+            "type_annotation": {
+              "type": "TypeAnnotation",
+              "line": 39,
+              "column": 13,
+              "name": "boolean",
+              "type_args": [],
+              "is_array": false
+            },
+            "init": {
+              "type": "ConditionalExpression",
+              "line": 39,
+              "column": 23,
+              "test": {
+                "type": "BinaryExpression",
+                "line": 39,
+                "column": 23,
+                "operator": ">",
+                "left": {
+                  "type": "Identifier",
+                  "line": 39,
+                  "column": 23,
+                  "name": "n"
+                },
+                "right": {
+                  "type": "Identifier",
+                  "line": 39,
+                  "column": 27,
+                  "name": "s"
+                }
+              },
+              "consequent": {
+                "type": "Literal",
+                "line": 39,
+                "column": 31,
+                "value": true,
+                "raw": "true",
+                "literal_type": "boolean"
+              },
+              "alternate": {
+                "type": "Literal",
+                "line": 39,
+                "column": 38,
+                "value": false,
+                "raw": "false",
+                "literal_type": "boolean"
+              }
+            },
+            "decorators": []
+          },
+          {
+            "type": "ExpressionStatement",
+            "line": 40,
+            "column": 3,
+            "expression": {
+              "type": "CallExpression",
+              "line": 40,
+              "column": 3,
+              "callee": {
+                "type": "MemberExpression",
+                "line": 40,
+                "column": 3,
+                "object": {
+                  "type": "Identifier",
+                  "line": 40,
+                  "column": 3,
+                  "name": "console"
+                },
+                "property": {
+                  "type": "Identifier",
+                  "line": 40,
+                  "column": 11,
+                  "name": "log"
+                },
+                "computed": false
+              },
+              "arguments": [
+                {
+                  "type": "CallExpression",
+                  "line": 40,
+                  "column": 15,
+                  "callee": {
+                    "type": "Identifier",
+                    "line": 40,
+                    "column": 15,
+                    "name": "classify"
+                  },
+                  "arguments": [
+                    {
+                      "type": "Identifier",
+                      "line": 40,
+                      "column": 24,
+                      "name": "s"
+                    }
+                  ]
+                },
+                {
+                  "type": "Identifier",
+                  "line": 40,
+                  "column": 28,
+                  "name": "flag"
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "decorators": [],
+      "modifiers": []
+    }
+  ]
+}

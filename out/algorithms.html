@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AST: algorithms.ets</title>
+<style>
+  :root { --bg:#0f1420; --fg:#e6edf3; --muted:#8b98a9; --line:#2c3648; }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--fg);
+         font-family: "Segoe UI", "Microsoft YaHei", system-ui, sans-serif; }
+  header { padding:14px 20px; border-bottom:1px solid var(--line);
+           display:flex; align-items:center; gap:16px; flex-wrap:wrap; position:sticky; top:0;
+           background:var(--bg); z-index:2; }
+  h1 { font-size:16px; margin:0; font-weight:600; }
+  .meta { color:var(--muted); font-size:12px; }
+  .tools { margin-left:auto; display:flex; gap:8px; }
+  input, button { background:#1a2231; color:var(--fg); border:1px solid var(--line);
+                  border-radius:6px; padding:6px 10px; font-size:12px; }
+  button { cursor:pointer; }
+  button:hover { border-color:#4d7cfe; }
+  #stage { padding:20px; overflow:auto; }
+  svg { display:block; }
+  .node rect { rx:8; ry:8; }
+  .node .title { font-size:13px; font-weight:600; }
+  .node .attr { font-size:11px; fill:var(--muted); }
+  .edge { stroke:var(--line); fill:none; }
+  .node.dim { opacity:0.15; }
+  .node.hit rect { stroke:#4d7cfe; stroke-width:2px; }
+  footer { padding:10px 20px; color:var(--muted); font-size:12px; border-top:1px solid var(--line); }
+  pre.src { background:#151b28; border:1px solid var(--line); border-radius:8px;
+            padding:12px; color:#c9d4e4; font-size:12px; overflow:auto; }
+</style>
+</head>
+<body>
+<header>
+  <h1>AST: algorithms.ets</h1>
+  <span class="meta" id="meta"></span>
+  <div class="tools">
+    <input id="search" type="text" placeholder="搜索节点类型或字段..." />
+    <button id="expand">全部展开</button>
+    <button id="collapse">折叠到 2 层</button>
+  </div>
+</header>
+<div id="stage"></div>
+<footer>Mini-ArkTS 编译器 · 实验一 AST 可视化 · 生成时间 —</footer>
+<script>
+const AST = {"type": "Program", "line": 1, "column": 1, "body": [{"type": "FunctionDeclaration", "line": 4, "column": 1, "name": "fib", "params": [{"type": "Parameter", "line": 4, "column": 14, "name": "n", "type_annotation": {"type": "TypeAnnotation", "line": 4, "column": 17, "name": "number", "type_args": [], "is_array": false}, "default": null, "rest": false}], "return_type": {"type": "TypeAnnotation", "line": 4, "column": 26, "name": "number", "type_args": [], "is_array": false}, "body": {"type": "Block", "line": 4, "column": 33, "body": [{"type": "VariableDeclaration", "line": 5, "column": 3, "kind": "let", "name": "a", "type_annotation": {"type": "TypeAnnotation", "line": 5, "column": 10, "name": "number", "type_args": [], "is_array": false}, "init": {"type": "Literal", "line": 5, "column": 19, "value": 0, "raw": "0", "literal_type": "number"}, "decorators": []}, {"type": "VariableDeclaration", "line": 6, "column": 3, "kind": "let", "name": "b", "type_annotation": {"type": "TypeAnnotation", "line": 6, "column": 10, "name": "number", "type_args": [], "is_array": false}, "init": {"type": "Literal", "line": 6, "column": 19, "value": 1, "raw": "1", "literal_type": "number"}, "decorators": []}, {"type": "ForStatement", "line": 7, "column": 3, "init": {"type": "VariableDeclaration", "line": 7, "column": 8, "kind": "let", "name": "i", "type_annotation": null, "init": {"type": "Literal", "line": 7, "column": 16, "value": 0, "raw": "0", "literal_type": "number"}, "decorators": []}, "test": {"type": "BinaryExpression", "line": 7, "column": 19, "operator": "<", "left": {"type": "Identifier", "line": 7, "column": 19, "name": "i"}, "right": {"type": "Identifier", "line": 7, "column": 23, "name": "n"}}, "update": {"type": "UpdateExpression", "line": 7, "column": 26, "operator": "++", "argument": {"type": "Identifier", "line": 7, "column": 26, "name": "i"}, "prefix": false}, "body": {"type": "Block", "line": 7, "column": 31, "body": [{"type": "VariableDeclaration", "line": 8, "column": 5, "kind": "let", "name": "t", "type_annotation": {"type": "TypeAnnotation", "line": 8, "column": 12, "name": "number", "type_args": [], "is_array": false}, "init": {"type": "BinaryExpression", "line": 8, "column": 21, "operator": "+", "left": {"type": "Identifier", "line": 8, "column": 21, "name": "a"}, "right": {"type": "Identifier", "line": 8, "column": 25, "name": "b"}}, "decorators": []}, {"type": "ExpressionStatement", "line": 9, "column": 5, "expression": {"type": "AssignmentExpression", "line": 9, "column": 5, "operator": "=", "left": {"type": "Identifier", "line": 9, "column": 5, "name": "a"}, "right": {"type": "Identifier", "line": 9, "column": 9, "name": "b"}}}, {"type": "ExpressionStatement", "line": 10, "column": 5, "expression": {"type": "AssignmentExpression", "line": 10, "column": 5, "operator": "=", "left": {"type": "Identifier", "line": 10, "column": 5, "name": "b"}, "right": {"type": "Identifier", "line": 10, "column": 9, "name": "t"}}}]}}, {"type": "ReturnStatement", "line": 12, "column": 3, "argument": {"type": "Identifier", "line": 12, "column": 10, "name": "a"}}]}, "decorators": [], "modifiers": []}, {"type": "FunctionDeclaration", "line": 15, "column": 1, "name": "sum", "params": [{"type": "Parameter", "line": 15, "column": 14, "name": "values", "type_annotation": {"type": "TypeAnnotation", "line": 15, "column": 22, "name": "number", "type_args": [], "is_array": true}, "default": null, "rest": false}], "return_type": {"type": "TypeAnnotation", "line": 15, "column": 33, "name": "number", "type_args": [], "is_array": false}, "body": {"type": "Block", "line": 15, "column": 40, "body": [{"type": "VariableDeclaration", "line": 16, "column": 3, "kind": "let", "name": "total", "type_annotation": {"type": "TypeAnnotation", "line": 16, "column": 14, "name": "number", "type_args": [], "is_array": false}, "init": {"type": "Literal", "line": 16, "column": 23, "value": 0, "raw": "0", "literal_type": "number"}, "decorators": []}, {"type": "VariableDeclaration", "line": 17, "column": 3, "kind": "let", "name": "i", "type_annotation": {"type": "TypeAnnotation", "line": 17, "column": 10, "name": "number", "type_args": [], "is_array": false}, "init": {"type": "Literal", "line": 17, "column": 19, "value": 0, "raw": "0", "literal_type": "number"}, "decorators": []}, {"type": "WhileStatement", "line": 18, "column": 3, "test": {"type": "BinaryExpression", "line": 18, "column": 10, "operator": "<", "left": {"type": "Identifier", "line": 18, "column": 10, "name": "i"}, "right": {"type": "MemberExpression", "line": 18, "column": 14, "object": {"type": "Identifier", "line": 18, "column": 14, "name": "values"}, "property": {"type": "Identifier", "line": 18, "column": 21, "name": "length"}, "computed": false}}, "body": {"type": "Block", "line": 18, "column": 29, "body": [{"type": "ExpressionStatement", "line": 19, "column": 5, "expression": {"type": "AssignmentExpression", "line": 19, "column": 5, "operator": "+=", "left": {"type": "Identifier", "line": 19, "column": 5, "name": "total"}, "right": {"type": "MemberExpression", "line": 19, "column": 14, "object": {"type": "Identifier", "line": 19, "column": 14, "name": "values"}, "property": {"type": "Identifier", "line": 19, "column": 21, "name": "i"}, "computed": true}}}, {"type": "ExpressionStatement", "line": 20, "column": 5, "expression": {"type": "UpdateExpression", "line": 20, "column": 5, "operator": "++", "argument": {"type": "Identifier", "line": 20, "column": 5, "name": "i"}, "prefix": false}}]}}, {"type": "ReturnStatement", "line": 22, "column": 3, "argument": {"type": "Identifier", "line": 22, "column": 10, "name": "total"}}]}, "decorators": [], "modifiers": []}, {"type": "FunctionDeclaration", "line": 25, "column": 1, "name": "classify", "params": [{"type": "Parameter", "line": 25, "column": 19, "name": "score", "type_annotation": {"type": "TypeAnnotation", "line": 25, "column": 26, "name": "number", "type_args": [], "is_array": false}, "default": null, "rest": false}], "return_type": {"type": "TypeAnnotation", "line": 25, "column": 35, "name": "string", "type_args": [], "is_array": false}, "body": {"type": "Block", "line": 25, "column": 42, "body": [{"type": "IfStatement", "line": 26, "column": 3, "test": {"type": "LogicalExpression", "line": 26, "column": 7, "operator": "&&", "left": {"type": "BinaryExpression", "line": 26, "column": 7, "operator": ">=", "left": {"type": "Identifier", "line": 26, "column": 7, "name": "score"}, "right": {"type": "Literal", "line": 26, "column": 16, "value": 90, "raw": "90", "literal_type": "number"}}, "right": {"type": "BinaryExpression", "line": 26, "column": 22, "operator": "<=", "left": {"type": "Identifier", "line": 26, "column": 22, "name": "score"}, "right": {"type": "Literal", "line": 26, "column": 31, "value": 100, "raw": "100", "literal_type": "number"}}}, "consequent": {"type": "Block", "line": 26, "column": 36, "body": [{"type": "ReturnStatement", "line": 27, "column": 5, "argument": {"type": "Literal", "line": 27, "column": 12, "value": "excellent", "raw": "'excellent'", "literal_type": "string"}}]}, "alternate": {"type": "IfStatement", "line": 28, "column": 10, "test": {"type": "BinaryExpression", "line": 28, "column": 14, "operator": ">=", "left": {"type": "Identifier", "line": 28, "column": 14, "name": "score"}, "right": {"type": "Literal", "line": 28, "column": 23, "value": 60, "raw": "60", "literal_type": "number"}}, "consequent": {"type": "Block", "line": 28, "column": 27, "body": [{"type": "ReturnStatement", "line": 29, "column": 5, "argument": {"type": "Literal", "line": 29, "column": 12, "value": "pass", "raw": "'pass'", "literal_type": "string"}}]}, "alternate": {"type": "Block", "line": 30, "column": 10, "body": [{"type": "ReturnStatement", "line": 31, "column": 5, "argument": {"type": "Literal", "line": 31, "column": 12, "value": "fail", "raw": "'fail'", "literal_type": "string"}}]}}}]}, "decorators": [], "modifiers": []}, {"type": "FunctionDeclaration", "line": 35, "column": 1, "name": "demo", "params": [], "return_type": {"type": "TypeAnnotation", "line": 35, "column": 18, "name": "void", "type_args": [], "is_array": false}, "body": {"type": "Block", "line": 35, "column": 23, "body": [{"type": "VariableDeclaration", "line": 36, "column": 3, "kind": "let", "name": "values", "type_annotation": {"type": "TypeAnnotation", "line": 36, "column": 15, "name": "number", "type_args": [], "is_array": true}, "init": {"type": "ArrayLiteral", "line": 36, "column": 26, "elements": [{"type": "Literal", "line": 36, "column": 27, "value": 1, "raw": "1", "literal_type": "number"}, {"type": "Literal", "line": 36, "column": 30, "value": 2, "raw": "2", "literal_type": "number"}, {"type": "Literal", "line": 36, "column": 33, "value": 3, "raw": "3", "literal_type": "number"}, {"type": "Literal", "line": 36, "column": 36, "value": 4, "raw": "4", "literal_type": "number"}, {"type": "Literal", "line": 36, "column": 39, "value": 5, "raw": "5", "literal_type": "number"}]}, "decorators": []}, {"type": "VariableDeclaration", "line": 37, "column": 3, "kind": "let", "name": "n", "type_annotation": {"type": "TypeAnnotation", "line": 37, "column": 10, "name": "number", "type_args": [], "is_array": false}, "init": {"type": "CallExpression", "line": 37, "column": 19, "callee": {"type": "Identifier", "line": 37, "column": 19, "name": "fib"}, "arguments": [{"type": "Literal", "line": 37, "column": 23, "value": 10, "raw": "10", "literal_type": "number"}]}, "decorators": []}, {"type": "VariableDeclaration", "line": 38, "column": 3, "kind": "let", "name": "s", "type_annotation": {"type": "TypeAnnotation", "line": 38, "column": 10, "name": "number", "type_args": [], "is_array": false}, "init": {"type": "CallExpression", "line": 38, "column": 19, "callee": {"type": "Identifier", "line": 38, "column": 19, "name": "sum"}, "arguments": [{"type": "Identifier", "line": 38, "column": 23, "name": "values"}]}, "decorators": []}, {"type": "VariableDeclaration", "line": 39, "column": 3, "kind": "let", "name": "flag", "type_annotation": {"type": "TypeAnnotation", "line": 39, "column": 13, "name": "boolean", "type_args": [], "is_array": false}, "init": {"type": "ConditionalExpression", "line": 39, "column": 23, "test": {"type": "BinaryExpression", "line": 39, "column": 23, "operator": ">", "left": {"type": "Identifier", "line": 39, "column": 23, "name": "n"}, "right": {"type": "Identifier", "line": 39, "column": 27, "name": "s"}}, "consequent": {"type": "Literal", "line": 39, "column": 31, "value": true, "raw": "true", "literal_type": "boolean"}, "alternate": {"type": "Literal", "line": 39, "column": 38, "value": false, "raw": "false", "literal_type": "boolean"}}, "decorators": []}, {"type": "ExpressionStatement", "line": 40, "column": 3, "expression": {"type": "CallExpression", "line": 40, "column": 3, "callee": {"type": "MemberExpression", "line": 40, "column": 3, "object": {"type": "Identifier", "line": 40, "column": 3, "name": "console"}, "property": {"type": "Identifier", "line": 40, "column": 11, "name": "log"}, "computed": false}, "arguments": [{"type": "CallExpression", "line": 40, "column": 15, "callee": {"type": "Identifier", "line": 40, "column": 15, "name": "classify"}, "arguments": [{"type": "Identifier", "line": 40, "column": 24, "name": "s"}]}, {"type": "Identifier", "line": 40, "column": 28, "name": "flag"}]}}]}, "decorators": [], "modifiers": []}]};
+const SOURCE = "// samples/algorithms.ets\n// 纯函数与流程控制：函数、for、while、if-else-if、数组、复合赋值、逻辑运算\n\nfunction fib(n: number): number {\n  let a: number = 0;\n  let b: number = 1;\n  for (let i = 0; i < n; i++) {\n    let t: number = a + b;\n    a = b;\n    b = t;\n  }\n  return a;\n}\n\nfunction sum(values: number[]): number {\n  let total: number = 0;\n  let i: number = 0;\n  while (i < values.length) {\n    total += values[i];\n    i++;\n  }\n  return total;\n}\n\nfunction classify(score: number): string {\n  if (score >= 90 && score <= 100) {\n    return 'excellent';\n  } else if (score >= 60) {\n    return 'pass';\n  } else {\n    return 'fail';\n  }\n}\n\nfunction demo(): void {\n  let values: number[] = [1, 2, 3, 4, 5];\n  let n: number = fib(10);\n  let s: number = sum(values);\n  let flag: boolean = n > s ? true : false;\n  console.log(classify(s), flag);\n}";
+
+const NODE_W = 190, GAP_X = 34, LEVEL_H = 92, PAD = 30;
+const COLLAPSED_H = 46;
+
+const CATEGORY = (t) => {
+  if (t.endsWith('Declaration')) return {fill:'#16351f', stroke:'#3fb950', text:'#7ee787'};
+  if (t.endsWith('Statement') || t === 'Block' || t === 'Program')
+    return {fill:'#3a2a12', stroke:'#d29922', text:'#e3b341'};
+  if (t.endsWith('Expression') || t === 'Identifier' || t === 'Property')
+    return {fill:'#12233f', stroke:'#58a6ff', text:'#79c0ff'};
+  if (t === 'Literal' || t === 'TypeAnnotation' || t === 'Decorator' || t === 'Parameter')
+    return {fill:'#2b1e3a', stroke:'#a371f7', text:'#d2a8ff'};
+  if (t === 'UiContainer') return {fill:'#3a1520', stroke:'#f778ba', text:'#ff9bce'};
+  return {fill:'#1c2431', stroke:'#30363d', text:'#c9d1d9'};
+};
+
+function isAstNode(o) { return o && typeof o === 'object' && !Array.isArray(o) && typeof o.type === 'string'; }
+
+function build(node) {
+  const label = node.type;
+  const attrs = [];
+  const children = [];
+  for (const k of Object.keys(node)) {
+    if (k === 'type' || k === 'line' || k === 'column') continue;
+    const v = node[k];
+    if (Array.isArray(v)) {
+      for (const item of v) {
+        if (isAstNode(item)) children.push(build(item));
+        else attrs.push(k + '=[' + v.length + ']');
+      }
+    } else if (isAstNode(v)) {
+      children.push(build(v));
+    } else if (v !== null && v !== '' && v !== undefined) {
+      attrs.push(k + '=' + JSON.stringify(v));
+    }
+  }
+  const loc = 'L' + node.line + ':' + node.column;
+  return { label, attrs, loc, children };
+}
+
+function visibleChildren(n) {
+  return n.collapsed ? [] : n.children;
+}
+
+function layout(root) {
+  let cursor = 0;
+  let maxDepth = 0;
+  (function walk(n, depth) {
+    n.depth = depth;
+    maxDepth = Math.max(maxDepth, depth);
+    n.height = COLLAPSED_H + (n.collapsed ? 0 : n.attrs.length * 15 + 8);
+    const kids = visibleChildren(n);
+    if (kids.length === 0) {
+      n.x = cursor;
+      cursor += NODE_W + GAP_X;
+    } else {
+      kids.forEach(c => walk(c, depth + 1));
+      n.x = (kids[0].x + kids[kids.length - 1].x) / 2;
+    }
+  })(root, 0);
+  return maxDepth;
+}
+
+function render() {
+  const stage = document.getElementById('stage');
+  stage.innerHTML = '';
+  const root = build(AST);
+  const maxDepth = layout(root);
+
+  let maxX = 0;
+  (function scan(n) { maxX = Math.max(maxX, n.x); visibleChildren(n).forEach(scan); })(root);
+
+  const width = maxX + NODE_W + PAD * 2;
+  const height = maxDepth * LEVEL_H + 160;
+  const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  svg.setAttribute('width', width);
+  svg.setAttribute('height', height);
+
+  const nodes = [];
+  const edges = [];
+
+  function emit(n) {
+    nodes.push(n);
+    for (const c of visibleChildren(n)) {
+      edges.push([n, c]);
+      emit(c);
+    }
+  }
+  emit(root);
+
+  for (const [p, c] of edges) {
+    const x1 = p.x + PAD + NODE_W / 2, y1 = p.depth * LEVEL_H + PAD + p.height;
+    const x2 = c.x + PAD + NODE_W / 2, y2 = c.depth * LEVEL_H + PAD;
+    const mid = (y1 + y2) / 2;
+    const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    path.setAttribute('class', 'edge');
+    path.setAttribute('d', `M${x1},${y1} C${x1},${mid} ${x2},${mid} ${x2},${y2}`);
+    svg.appendChild(path);
+  }
+
+  for (const n of nodes) {
+    const c = CATEGORY(n.label);
+    const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+    g.setAttribute('class', 'node');
+    g.setAttribute('data-label', n.label);
+    g.setAttribute('transform', `translate(${n.x + PAD}, ${n.depth * LEVEL_H + PAD})`);
+    g.style.cursor = n.children.length ? 'pointer' : 'default';
+    if (n.children.length) {
+      g.addEventListener('click', () => { n.collapsed = !n.collapsed; render(); });
+    }
+
+    const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+    rect.setAttribute('width', NODE_W);
+    rect.setAttribute('height', n.height);
+    rect.setAttribute('fill', c.fill);
+    rect.setAttribute('stroke', c.stroke);
+    g.appendChild(rect);
+
+    const title = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+    title.setAttribute('x', 12);
+    title.setAttribute('y', 22);
+    title.setAttribute('fill', c.text);
+    title.setAttribute('class', 'title');
+    title.textContent = n.label + (n.children.length ? '  ▸' : '');
+    g.appendChild(title);
+
+    const loc = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+    loc.setAttribute('x', NODE_W - 12);
+    loc.setAttribute('y', 22);
+    loc.setAttribute('text-anchor', 'end');
+    loc.setAttribute('fill', '#5c6b7f');
+    loc.setAttribute('class', 'attr');
+    loc.textContent = n.loc;
+    g.appendChild(loc);
+
+    if (!n.collapsed) {
+      n.attrs.forEach((a, i) => {
+        const t = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+        t.setAttribute('x', 12);
+        t.setAttribute('y', 42 + i * 15);
+        t.setAttribute('class', 'attr');
+        t.setAttribute('fill', '#8b98a9');
+        t.textContent = a.length > 26 ? a.slice(0, 25) + '…' : a;
+        g.appendChild(t);
+      });
+    }
+    svg.appendChild(g);
+  }
+
+  stage.appendChild(svg);
+
+  const count = (function c(n){ return 1 + n.children.reduce((s,ch)=>s+c(ch),0); })(root);
+  document.getElementById('meta').textContent = `节点 ${count} 个 · 深度 ${maxDepth + 1} 层`;
+}
+
+document.getElementById('search').addEventListener('input', (e) => {
+  const q = e.target.value.trim().toLowerCase();
+  document.querySelectorAll('.node').forEach(g => {
+    const hit = q && g.getAttribute('data-label').toLowerCase().includes(q);
+    g.classList.toggle('hit', !!hit);
+    g.classList.toggle('dim', !!q && !hit);
+  });
+});
+document.getElementById('collapse').addEventListener('click', () => {
+  const root = build(AST);
+  (function walk(n, d) { if (d >= 2) n.collapsed = true; n.children.forEach(c => walk(c, d + 1)); })(root, 0);
+  window.__forced = root;
+  render();
+});
+document.getElementById('expand').addEventListener('click', render);
+
+render();
+if (SOURCE) {
+  const pre = document.createElement('pre');
+  pre.className = 'src';
+  pre.textContent = SOURCE;
+  document.getElementById('stage').prepend(pre);
+}
+</script>
+</body>
+</html>

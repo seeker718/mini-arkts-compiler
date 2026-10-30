@@ -1,0 +1,29 @@
+module mini_arkts_module
+
+func foldConstants() -> number {
+entry:
+  ret 35
+}
+
+func deadCode(%p0_flag) -> number {
+entry:
+  jmp if.else.2
+if.else.2:
+  jmp if.end.3
+if.end.3:
+  jmp if.then.4
+if.then.4:
+  jmp if.end.6
+if.end.6:
+  ret 11
+}
+
+func demo() -> number {
+entry:
+  %t1 = call foldConstants()
+  %a = assign %t1
+  %t2 = call deadCode(true)
+  %b = assign %t2
+  %t3 = add %a, %b
+  ret %t3
+}

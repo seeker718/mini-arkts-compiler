@@ -1,0 +1,482 @@
+{
+  "type": "Program",
+  "line": 1,
+  "column": 1,
+  "body": [
+    {
+      "type": "ClassDeclaration",
+      "line": 6,
+      "column": 1,
+      "kind": "struct",
+      "name": "Counter",
+      "extends": null,
+      "implements": [],
+      "members": [
+        {
+          "type": "FieldDeclaration",
+          "line": 7,
+          "column": 10,
+          "name": "count",
+          "type_annotation": {
+            "type": "TypeAnnotation",
+            "line": 7,
+            "column": 17,
+            "name": "number",
+            "type_args": [],
+            "is_array": false
+          },
+          "init": {
+            "type": "Literal",
+            "line": 7,
+            "column": 26,
+            "value": 0,
+            "raw": "0",
+            "literal_type": "number"
+          },
+          "decorators": [
+            {
+              "type": "Decorator",
+              "line": 7,
+              "column": 3,
+              "name": "State",
+              "arguments": []
+            }
+          ],
+          "modifiers": []
+        },
+        {
+          "type": "FieldDeclaration",
+          "line": 8,
+          "column": 9,
+          "name": "step",
+          "type_annotation": {
+            "type": "TypeAnnotation",
+            "line": 8,
+            "column": 15,
+            "name": "number",
+            "type_args": [],
+            "is_array": false
+          },
+          "init": {
+            "type": "Literal",
+            "line": 8,
+            "column": 24,
+            "value": 1,
+            "raw": "1",
+            "literal_type": "number"
+          },
+          "decorators": [
+            {
+              "type": "Decorator",
+              "line": 8,
+              "column": 3,
+              "name": "Prop",
+              "arguments": []
+            }
+          ],
+          "modifiers": []
+        },
+        {
+          "type": "MethodDeclaration",
+          "line": 10,
+          "column": 3,
+          "name": "increment",
+          "params": [
+            {
+              "type": "Parameter",
+              "line": 10,
+              "column": 13,
+              "name": "step",
+              "type_annotation": {
+                "type": "TypeAnnotation",
+                "line": 10,
+                "column": 19,
+                "name": "number",
+                "type_args": [],
+                "is_array": false
+              },
+              "default": null,
+              "rest": false
+            }
+          ],
+          "return_type": {
+            "type": "TypeAnnotation",
+            "line": 10,
+            "column": 28,
+            "name": "void",
+            "type_args": [],
+            "is_array": false
+          },
+          "body": {
+            "type": "Block",
+            "line": 10,
+            "column": 33,
+            "body": [
+              {
+                "type": "ExpressionStatement",
+                "line": 11,
+                "column": 5,
+                "expression": {
+                  "type": "AssignmentExpression",
+                  "line": 11,
+                  "column": 5,
+                  "operator": "=",
+                  "left": {
+                    "type": "MemberExpression",
+                    "line": 11,
+                    "column": 5,
+                    "object": {
+                      "type": "ThisExpression",
+                      "line": 11,
+                      "column": 5
+                    },
+                    "property": {
+                      "type": "Identifier",
+                      "line": 11,
+                      "column": 10,
+                      "name": "count"
+                    },
+                    "computed": false
+                  },
+                  "right": {
+                    "type": "BinaryExpression",
+                    "line": 11,
+                    "column": 18,
+                    "operator": "+",
+                    "left": {
+                      "type": "MemberExpression",
+                      "line": 11,
+                      "column": 18,
+                      "object": {
+                        "type": "ThisExpression",
+                        "line": 11,
+                        "column": 18
+                      },
+                      "property": {
+                        "type": "Identifier",
+                        "line": 11,
+                        "column": 23,
+                        "name": "count"
+                      },
+                      "computed": false
+                    },
+                    "right": {
+                      "type": "Identifier",
+                      "line": 11,
+                      "column": 31,
+                      "name": "step"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          "decorators": [],
+          "modifiers": []
+        },
+        {
+          "type": "MethodDeclaration",
+          "line": 14,
+          "column": 3,
+          "name": "build",
+          "params": [],
+          "return_type": null,
+          "body": {
+            "type": "Block",
+            "line": 14,
+            "column": 11,
+            "body": [
+              {
+                "type": "UiContainer",
+                "line": 15,
+                "column": 5,
+                "name": "Column",
+                "arguments": [],
+                "children": [
+                  {
+                    "type": "ExpressionStatement",
+                    "line": 16,
+                    "column": 7,
+                    "expression": {
+                      "type": "CallExpression",
+                      "line": 16,
+                      "column": 7,
+                      "callee": {
+                        "type": "MemberExpression",
+                        "line": 16,
+                        "column": 7,
+                        "object": {
+                          "type": "CallExpression",
+                          "line": 16,
+                          "column": 7,
+                          "callee": {
+                            "type": "Identifier",
+                            "line": 16,
+                            "column": 7,
+                            "name": "Text"
+                          },
+                          "arguments": [
+                            {
+                              "type": "Literal",
+                              "line": 16,
+                              "column": 12,
+                              "value": "`Count: ${this.count}`",
+                              "raw": "`Count: ${this.count}`",
+                              "literal_type": "template"
+                            }
+                          ]
+                        },
+                        "property": {
+                          "type": "Identifier",
+                          "line": 17,
+                          "column": 10,
+                          "name": "fontSize"
+                        },
+                        "computed": false
+                      },
+                      "arguments": [
+                        {
+                          "type": "Literal",
+                          "line": 17,
+                          "column": 19,
+                          "value": 20,
+                          "raw": "20",
+                          "literal_type": "number"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "type": "ExpressionStatement",
+                    "line": 18,
+                    "column": 7,
+                    "expression": {
+                      "type": "CallExpression",
+                      "line": 18,
+                      "column": 7,
+                      "callee": {
+                        "type": "MemberExpression",
+                        "line": 18,
+                        "column": 7,
+                        "object": {
+                          "type": "CallExpression",
+                          "line": 18,
+                          "column": 7,
+                          "callee": {
+                            "type": "Identifier",
+                            "line": 18,
+                            "column": 7,
+                            "name": "Button"
+                          },
+                          "arguments": [
+                            {
+                              "type": "Literal",
+                              "line": 18,
+                              "column": 14,
+                              "value": "+1",
+                              "raw": "'+1'",
+                              "literal_type": "string"
+                            }
+                          ]
+                        },
+                        "property": {
+                          "type": "Identifier",
+                          "line": 19,
+                          "column": 10,
+                          "name": "onClick"
+                        },
+                        "computed": false
+                      },
+                      "arguments": [
+                        {
+                          "type": "ArrowFunctionExpression",
+                          "line": 19,
+                          "column": 18,
+                          "params": [],
+                          "body": {
+                            "type": "Block",
+                            "line": 19,
+                            "column": 24,
+                            "body": [
+                              {
+                                "type": "ExpressionStatement",
+                                "line": 20,
+                                "column": 11,
+                                "expression": {
+                                  "type": "CallExpression",
+                                  "line": 20,
+                                  "column": 11,
+                                  "callee": {
+                                    "type": "MemberExpression",
+                                    "line": 20,
+                                    "column": 11,
+                                    "object": {
+                                      "type": "ThisExpression",
+                                      "line": 20,
+                                      "column": 11
+                                    },
+                                    "property": {
+                                      "type": "Identifier",
+                                      "line": 20,
+                                      "column": 16,
+                                      "name": "increment"
+                                    },
+                                    "computed": false
+                                  },
+                                  "arguments": [
+                                    {
+                                      "type": "MemberExpression",
+                                      "line": 20,
+                                      "column": 26,
+                                      "object": {
+                                        "type": "ThisExpression",
+                                        "line": 20,
+                                        "column": 26
+                                      },
+                                      "property": {
+                                        "type": "Identifier",
+                                        "line": 20,
+                                        "column": 31,
+                                        "name": "step"
+                                      },
+                                      "computed": false
+                                    }
+                                  ]
+                                }
+                              }
+                            ]
+                          },
+                          "is_expression": false
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "type": "IfStatement",
+                    "line": 22,
+                    "column": 7,
+                    "test": {
+                      "type": "BinaryExpression",
+                      "line": 22,
+                      "column": 11,
+                      "operator": ">",
+                      "left": {
+                        "type": "MemberExpression",
+                        "line": 22,
+                        "column": 11,
+                        "object": {
+                          "type": "ThisExpression",
+                          "line": 22,
+                          "column": 11
+                        },
+                        "property": {
+                          "type": "Identifier",
+                          "line": 22,
+                          "column": 16,
+                          "name": "count"
+                        },
+                        "computed": false
+                      },
+                      "right": {
+                        "type": "Literal",
+                        "line": 22,
+                        "column": 24,
+                        "value": 10,
+                        "raw": "10",
+                        "literal_type": "number"
+                      }
+                    },
+                    "consequent": {
+                      "type": "Block",
+                      "line": 22,
+                      "column": 28,
+                      "body": [
+                        {
+                          "type": "ExpressionStatement",
+                          "line": 23,
+                          "column": 9,
+                          "expression": {
+                            "type": "CallExpression",
+                            "line": 23,
+                            "column": 9,
+                            "callee": {
+                              "type": "Identifier",
+                              "line": 23,
+                              "column": 9,
+                              "name": "Text"
+                            },
+                            "arguments": [
+                              {
+                                "type": "Literal",
+                                "line": 23,
+                                "column": 14,
+                                "value": "Big",
+                                "raw": "'Big'",
+                                "literal_type": "string"
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    },
+                    "alternate": {
+                      "type": "Block",
+                      "line": 24,
+                      "column": 14,
+                      "body": [
+                        {
+                          "type": "ExpressionStatement",
+                          "line": 25,
+                          "column": 9,
+                          "expression": {
+                            "type": "CallExpression",
+                            "line": 25,
+                            "column": 9,
+                            "callee": {
+                              "type": "Identifier",
+                              "line": 25,
+                              "column": 9,
+                              "name": "Text"
+                            },
+                            "arguments": [
+                              {
+                                "type": "Literal",
+                                "line": 25,
+                                "column": 14,
+                                "value": "Small",
+                                "raw": "'Small'",
+                                "literal_type": "string"
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            ]
+          },
+          "decorators": [],
+          "modifiers": []
+        }
+      ],
+      "decorators": [
+        {
+          "type": "Decorator",
+          "line": 4,
+          "column": 1,
+          "name": "Entry",
+          "arguments": []
+        },
+        {
+          "type": "Decorator",
+          "line": 5,
+          "column": 1,
+          "name": "Component",
+          "arguments": []
+        }
+      ]
+    }
+  ]
+}

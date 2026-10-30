@@ -1,0 +1,50 @@
+module mini_arkts_module
+
+func foldConstants() -> number {
+entry:
+  %t1 = mul 3, 4
+  %t2 = add 2, %t1
+  %a = assign %t2
+  %t3 = add 1, 2
+  %t4 = add 3, 4
+  %t5 = mul %t3, %t4
+  %b = assign %t5
+  %t6 = add %a, %b
+  %c = assign %t6
+  ret %c
+}
+
+func deadCode(%p0_flag) -> number {
+entry:
+  %x = assign 10
+  br false, if.then.1, if.else.2
+if.then.1:
+  %x.2 = assign 999
+  jmp if.end.3
+if.else.2:
+  jmp if.end.3
+if.end.3:
+  %x.3 = phi [%x.2, if.then.1], [%x, if.else.2]
+  br true, if.then.4, if.else.5
+if.then.4:
+  %t1 = add %x.3, 1
+  %x.4 = assign %t1
+  jmp if.end.6
+if.else.5:
+  jmp if.end.6
+if.end.6:
+  %x.5 = phi [%x.4, if.then.4], [%x.3, if.else.5]
+  %t2 = mul %x.5, 100
+  %unused = assign %t2
+  ret %x.5
+}
+
+func demo() -> number {
+entry:
+  %t1 = call foldConstants()
+  %a = assign %t1
+  %t2 = call deadCode(true)
+  %b = assign %t2
+  %t3 = add %a, %b
+  ret %t3
+}
